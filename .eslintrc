@@ -47,6 +47,7 @@
           // Absolute imports and other imports such as Vue-style `@/foo`.
           // Anything that does not start with a dot.
           ["^[^.]"],
+          ["^src"],
           // Parent folder relative imports.
           // Anything that starts with a double dot.
           ["^\\../"],

@@ -1,13 +1,10 @@
 declare namespace NodeJS {
-  type EnvVars =
-    | 'PORT'
-    | 'DB_HOST'
-    | 'DB_PORT'
-    | 'DB_USER'
-    | 'DB_PASSWORD'
-    | 'DB_NAME'
-
-  type ProcessEnv = {
-    [K in EnvVars]: string | undefined
+  interface ProcessEnv {
+    PORT: string
+    DB_HOST: string
+    DB_PORT: number
+    DB_USER: string
+    DB_PASSWORD: string
+    DB_NAME: string
   }
 }
