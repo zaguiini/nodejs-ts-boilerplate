@@ -1,6 +1,6 @@
 {
   "name": "nodejs-ts-boilerplate",
-  "description": "My personal NodeJS Typescript boilerplate",
+  "description": "Bleeding edge NodeJS Typescript boilerplate",
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
