@@ -1,8 +1,17 @@
-import { Arg, Mutation, Query, Resolver } from 'type-graphql'
+import { Arg, Field, InputType, Mutation, Query, Resolver } from 'type-graphql'
 import { Repository } from 'typeorm'
 import { InjectRepository } from 'typeorm-typedi-extensions'
 
-import { AddUserInput, User } from 'src/entity/user'
+import { User } from 'src/entity/user'
+
+@InputType({ description: 'New user data' })
+export class AddUserInput implements Pick<User, 'name' | 'email'> {
+  @Field()
+  name!: string
+
+  @Field()
+  email!: string
+}
 
 @Resolver(() => User)
 export class UserResolver {
@@ -16,10 +25,8 @@ export class UserResolver {
   }
 
   @Mutation(() => User)
-  insertUser(@Arg('data') { email, name }: AddUserInput): Promise<User> {
-    const user = new User()
-    user.email = email
-    user.name = name
+  insertUser(@Arg('data') data: AddUserInput): Promise<User> {
+    const user = User.create(data)
 
     return this.userRepository.save(user)
   }

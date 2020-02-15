@@ -1,9 +1,9 @@
-import { Field, InputType, ObjectType } from 'type-graphql'
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { Field, ObjectType } from 'type-graphql'
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity({ name: 'users' })
 @ObjectType()
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   @Field()
   id!: string
@@ -13,15 +13,6 @@ export class User {
   name!: string
 
   @Column({ unique: true })
-  @Field()
-  email!: string
-}
-
-@InputType({ description: 'New user data' })
-export class AddUserInput implements Omit<User, 'id'> {
-  @Field()
-  name!: string
-
   @Field()
   email!: string
 }
