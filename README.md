@@ -26,7 +26,7 @@ You'll surely want to write some tests, don't you? 🧪
 
 #### [ESLint](https://eslint.org/)
 
-A lot of lint rules to enforce best practices, including unicorn, @typescript-eslint, prettier and import plugins ✨
+A lot of lint rules to enforce best practices, including [unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn), [@typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), [prettier](https://github.com/prettier/eslint-plugin-prettier) and plugins to better import organization ✨
 
 #### [Prettier](https://prettier.io/)
 
