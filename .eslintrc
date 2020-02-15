@@ -1,6 +1,16 @@
 {
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "plugin:unicorn/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "unused-imports",
+    "simple-import-sort",
+    "import",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "env": {
     "node": true,
     "jest": true,
@@ -8,7 +18,42 @@
   },
   "rules": {
     "prettier/prettier": "error",
-    "@typescript-eslint/no-unused-vars": "error"
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ],
+    "import/order": "off",
+    "sort-imports": "off",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "simple-import-sort/sort": [
+      "error",
+      {
+        "groups": [
+          // Side effect imports.
+          ["^\\u0000"],
+          // Packages.
+          // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
+          ["^@?\\w"],
+          // Absolute imports and other imports such as Vue-style `@/foo`.
+          // Anything that does not start with a dot.
+          ["^[^.]"],
+          // Parent folder relative imports.
+          // Anything that starts with a double dot.
+          ["^\\../"],
+          // Same folder relative imports.
+          // Anything that starts with a dot.
+          ["^\\./"]
+        ]
+      }
+    ]
   },
   "parser": "@typescript-eslint/parser",
   "overrides": [

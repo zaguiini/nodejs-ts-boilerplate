@@ -1,3 +1,3 @@
 import { log } from 'src/lib'
-
-log('Hello, World!')
+// TODO: Remove this.
+log(`It's time to do amazing things!`)
