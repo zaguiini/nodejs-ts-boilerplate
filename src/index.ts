@@ -1,14 +1,16 @@
 import 'reflect-metadata'
 
 import { ApolloServer } from 'apollo-server'
+import { useContainer as classValidatorUseContainer } from 'class-validator'
 import { resolve } from 'path'
 import { buildSchema } from 'type-graphql'
 import { Container } from 'typedi'
-import { createConnection, useContainer } from 'typeorm'
+import { createConnection, useContainer as typeORMUserContainer } from 'typeorm'
 
 import { UserResolver } from './resolver/user'
 
-useContainer(Container)
+typeORMUserContainer(Container)
+classValidatorUseContainer(Container)
 
 async function bootstrap() {
   await createConnection()
@@ -17,6 +19,7 @@ async function bootstrap() {
     resolvers: [UserResolver],
     emitSchemaFile: resolve(__dirname, 'schema.gql'),
     container: Container,
+    validate: false,
   })
 
   const server = new ApolloServer({

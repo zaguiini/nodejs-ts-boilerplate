@@ -1,8 +1,8 @@
-import { Query, Resolver } from 'type-graphql'
+import { Arg, Mutation, Query, Resolver } from 'type-graphql'
 import { Repository } from 'typeorm'
 import { InjectRepository } from 'typeorm-typedi-extensions'
 
-import { User } from 'src/entity/user'
+import { AddUserInput, User } from 'src/entity/user'
 
 @Resolver(() => User)
 export class UserResolver {
@@ -13,5 +13,14 @@ export class UserResolver {
   @Query(() => [User])
   users(): Promise<User[]> {
     return this.userRepository.find()
+  }
+
+  @Mutation(() => User)
+  insertUser(@Arg('data') { email, name }: AddUserInput): Promise<User> {
+    const user = new User()
+    user.email = email
+    user.name = name
+
+    return this.userRepository.save(user)
   }
 }

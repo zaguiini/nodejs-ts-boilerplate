@@ -1,4 +1,4 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity({ name: 'users' })
@@ -12,7 +12,16 @@ export class User {
   @Field()
   name!: string
 
-  @Column()
+  @Column({ unique: true })
+  @Field()
+  email!: string
+}
+
+@InputType({ description: 'New user data' })
+export class AddUserInput implements Omit<User, 'id'> {
+  @Field()
+  name!: string
+
   @Field()
   email!: string
 }
