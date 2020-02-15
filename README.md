@@ -4,7 +4,7 @@ Everything you ever wanted for your next NodeJS project!
 
 ## Usage
 
-Just use this a template.
+Just use this repository as a template.
 
 1. Clone it;
 2. Change `name` and `description` on `package.json`;
@@ -35,6 +35,12 @@ Because code style matters 💅
 #### [lint-staged](https://github.com/okonet/lint-staged) and [commitlint](https://github.com/conventional-changelog/commitlint)
 
 Someone has to stop you from accidentally committing code smells and poor commit messages 🧹
+
+## Contributing
+
+Everything should operate as expected, but if something doesn't, please fill an issue.
+
+If you feel it could be improved, create a Pull Request! They are very welcome!
 
 ## License
 
