@@ -30,7 +30,7 @@
     "typescript": "^3.7.5"
   },
   "lint-staged": {
-    "src/**/*.{ts}": [
+    "src/**/*.ts": [
       "eslint . --fix"
     ]
   },
