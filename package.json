@@ -31,7 +31,7 @@
   },
   "lint-staged": {
     "src/**/*.ts": [
-      "eslint . --fix"
+      "eslint . --ext ts --fix"
     ]
   },
   "husky": {
