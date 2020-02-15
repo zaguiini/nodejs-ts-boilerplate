@@ -1,0 +1,2 @@
+dotenv/config
+tsconfig-paths/register

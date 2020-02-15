@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-ts-boilerplate",
+  "description": "My personal NodeJS Typescript boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "get-requirements": "node load-requirements.js",
+    "start": "ts-node-dev $(yarn --silent get-requirements) --respawn src/index.ts",
+    "serve": "ts-node $(yarn --silent get-requirements) src/index.ts",
+    "lint": "eslint './src/**/*.ts' --fix"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.6.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.7.5",
+    "dotenv": "^8.2.0"
+  }
+}
