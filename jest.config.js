@@ -6,5 +6,4 @@ module.exports = {
   testEnvironment: 'node',
   modulePaths: [compilerOptions.baseUrl],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
-  globalSetup: './src/setup-tests.ts',
 }
