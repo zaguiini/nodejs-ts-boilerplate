@@ -2,7 +2,7 @@ import { Arg, Field, InputType, Mutation, Query, Resolver } from 'type-graphql'
 import { Repository } from 'typeorm'
 import { InjectRepository } from 'typeorm-typedi-extensions'
 
-import { User } from 'src/entity/user'
+import { User } from 'src/entities/user'
 
 @InputType({ description: 'New user data' })
 export class AddUserInput implements Pick<User, 'name' | 'email'> {
