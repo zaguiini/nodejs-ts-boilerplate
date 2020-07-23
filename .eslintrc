@@ -18,6 +18,7 @@
   },
   "rules": {
     "prettier/prettier": "error",
+    "object-shorthand": "error",
     "no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/member-delimiter-style": "off",

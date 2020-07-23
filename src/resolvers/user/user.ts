@@ -1,6 +1,4 @@
 import { Arg, Field, InputType, Mutation, Query, Resolver } from 'type-graphql'
-import { Repository } from 'typeorm'
-import { InjectRepository } from 'typeorm-typedi-extensions'
 
 import { User } from 'src/entities/user'
 
@@ -15,18 +13,14 @@ export class AddUserInput implements Pick<User, 'name' | 'email'> {
 
 @Resolver(() => User)
 export class UserResolver {
-  constructor(
-    @InjectRepository(User) private readonly userRepository: Repository<User>
-  ) {}
-
   @Query(() => [User])
   users() {
-    return this.userRepository.find()
+    return User.find()
   }
 
   @Query(() => User)
   async user(@Arg('id') id: string) {
-    const user = await this.userRepository.findOne(id)
+    const user = await User.findOne(id)
 
     if (user) {
       return user
@@ -39,12 +33,12 @@ export class UserResolver {
   insertUser(@Arg('data') data: AddUserInput) {
     const user = User.create(data)
 
-    return this.userRepository.save(user)
+    return User.save(user)
   }
 
   @Mutation(() => User)
   async updateUser(@Arg('id') id: string, @Arg('data') data: AddUserInput) {
-    const user = await this.userRepository.findOne(id)
+    const user = await User.findOne(id)
 
     if (user) {
       user.name = data.name
@@ -59,13 +53,9 @@ export class UserResolver {
 
   @Mutation(() => Boolean)
   async removeUser(@Arg('id') id: string) {
-    const user = await this.userRepository.findOne(id)
+    const user = await User.findOneOrFail(id)
 
-    if (user) {
-      await user.remove()
-      return true
-    }
-
-    throw new Error('User not found')
+    await user.remove()
+    return true
   }
 }
