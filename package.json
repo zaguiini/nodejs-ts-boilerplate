@@ -9,6 +9,7 @@
     "start": "ts-node-dev $(yarn --silent get-requirements) --respawn src/index.ts",
     "serve": "ts-node $(yarn --silent get-requirements) src/index.ts",
     "lint": "eslint './src/**/*.ts' --fix",
+    "typeorm": "ts-node $(yarn --silent get-requirements) ./node_modules/.bin/typeorm",
     "test": "jest"
   },
   "devDependencies": {
